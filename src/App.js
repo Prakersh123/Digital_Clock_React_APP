@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React ,{useState} from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const Sub_block=(props)=>{
+    return(
+        <div className="sub_block">
+           <h1><i>{props.hh}</i></h1>     
+        </div>
+    )
 }
 
-export default App;
+const Clock = ()=>{
+
+    const [tim,setCount] = useState(new Date());
+    
+    const IncNum=()=>{
+
+        setCount(new Date())
+        
+    }
+    setInterval(IncNum,1000);
+
+
+    return(
+        <>
+            <div className="main_block">
+            <Sub_block hh={tim.getHours()}/>
+            <span className="sp"><i>:</i></span>
+            <Sub_block hh={tim.getMinutes()}/>
+            <span className="sp"><i>:</i></span>
+
+            <Sub_block hh={tim.getSeconds()}/>
+
+            </div>
+        </>
+    )
+}
+
+export default Clock
+
